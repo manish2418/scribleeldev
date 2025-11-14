@@ -20,6 +20,7 @@ import animationData from "../../public/flying.json";
             display:"flex",
             justifyContent:"center",
             textTransform:"uppercase",
+            textAlign:"center",
             fontSize:{xs:"18px", sm:"24px", md:"1.125rem"},
             px:{xs:2, md:0}
           }}

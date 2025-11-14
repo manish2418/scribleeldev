@@ -40,7 +40,7 @@ const Footer = () => {
             mt:{xs:4, md:0}
           }}
         >
-          Be Part of the First <br /> Scribblee Families
+          Be Part of the First <br /> Scriblee Families
         </Typography>
 
         <Box
