@@ -47,7 +47,7 @@ const WaitlistInput = () => {
   };
 
   return (
-    <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
+    <Box sx={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
       <Box
         component="form"
         onSubmit={handleSubmit}
@@ -98,16 +98,27 @@ const WaitlistInput = () => {
         </Button>
       </Box>
       {message && (
-        <Typography
+        <Box
           sx={{
+            width: { xs: "92%", sm: "500px", md: "600px" },
+            maxWidth: { xs: "100%", sm: "500px", md: "600px" },
             marginTop: "10px",
-            fontSize: { xs: "12px", sm: "14px" },
-            color: "#FF5252",
-            textAlign: "center",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          {message}
-        </Typography>
+          <Typography
+            sx={{
+              fontSize: { xs: "12px", sm: "14px" },
+              color: "#FF5252",
+              textAlign: "center",
+              width: "100%",
+            }}
+          >
+            {message}
+          </Typography>
+        </Box>
       )}
       <SuccessPopup
         open={showSuccessPopup}

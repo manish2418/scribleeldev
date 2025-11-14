@@ -150,16 +150,16 @@ const HeroSection = () => {
       >
         <Box
           sx={{
-            width: {xs:"85%", sm:"75%", md:"70%"},
-            maxWidth: "700px",
+            width: {xs:"95%", sm:"85%", md:"75%"},
+            maxWidth: "900px",
             display: "block",
             margin:"0 auto"
           }}
         >
           <Image
             src={Phone}
-            height={800}
-            width={700}
+            height={1000}
+            width={900}
             alt="phone"
             style={{
               width: "100%",

@@ -1,6 +1,10 @@
+"use client"
+
 import { Box, Typography } from "@mui/material";
-import Image from "next/image";
-import Sword from "../../public/herosection/Sword.png"
+// import Image from "next/image";
+// import Sword from "../../public/herosection/Sword.png"
+import Lottie from "lottie-react";
+import animationData from "../../public/flying.json";
 
 
  const WelcomeSection =()=>{
@@ -49,7 +53,22 @@ import Sword from "../../public/herosection/Sword.png"
 
     
         </Box>
-        <Image src={Sword} height={500} width={500} alt="swordimage" style={{width:"100%",height:"auto"}}/>
+         <Box sx={{ 
+           mt: { xs: -4, md: -9 }, 
+           mb: 5,
+           display: "flex",
+           justifyContent: "center",
+           alignItems: "center",
+           width: "100%"
+         }}>
+  <Lottie
+    animationData={animationData}
+    loop
+    autoplay
+    style={{ width: "100%", maxWidth: "600px", height: "auto", minHeight: "300px" }}
+  />
+</Box>
+
         </>
     )
  }

@@ -47,7 +47,14 @@ const FooterWaitlistInput = () => {
   };
 
   return (
-    <Box width={{md:"509px"}}>
+    <Box 
+      width={{md:"509px"}}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
       <Box
         component="form"
         onSubmit={handleSubmit}
@@ -106,16 +113,27 @@ const FooterWaitlistInput = () => {
         </Button>
       </Box>
       {message && (
-        <Typography
+        <Box
           sx={{
+            width: "100%",
+            maxWidth: {xs:"100%", sm:"450px", md:"509px"},
             marginTop: "10px",
-            fontSize: "14px",
-            color: "#FF5252",
-            textAlign: "left",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          {message}
-        </Typography>
+          <Typography
+            sx={{
+              fontSize: "14px",
+              color: "#FF5252",
+              textAlign: "center",
+              width: "100%",
+            }}
+          >
+            {message}
+          </Typography>
+        </Box>
       )}
       <SuccessPopup
         open={showSuccessPopup}

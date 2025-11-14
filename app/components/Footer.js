@@ -1,5 +1,6 @@
 "use client";
 import { Box, Grid, Typography } from "@mui/material";
+import Image from "next/image";
 import Lottie from "lottie-react";
 import animationData from "../../public/cutelaine.json";
 import FooterWaitlistInput from "./FooterWaitlistInput";
@@ -77,6 +78,72 @@ const Footer = () => {
     style={{ width: "100%", maxWidth: "600px", height: "auto", minHeight: "300px" }}
   />
 </Box>
+
+        {/* APP STORE ICONS */}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: { xs: 2, sm: 3 },
+            flexWrap: "wrap",
+            mt: { xs: 2, md: 3 },
+            mb: { xs: 4, md: 5 },
+          }}
+        >
+          <Box
+            component="a"
+            href="#"
+            sx={{
+              display: "block",
+              transition: "transform 0.3s ease",
+              maxWidth: { xs: "140px", sm: "180px" },
+              "&:hover": {
+                transform: "scale(1.05)",
+              },
+            }}
+          >
+            <Image
+              src="/google-play-badge.png"
+              alt="Get it on Google Play"
+              width={180}
+              height={70}
+              style={{
+                height: "auto",
+                width: "100%",
+              }}
+              onError={(e) => {
+                e.target.style.display = "none";
+              }}
+            />
+          </Box>
+          <Box
+            component="a"
+            href="#"
+            sx={{
+              display: "block",
+              transition: "transform 0.3s ease",
+              maxWidth: { xs: "140px", sm: "180px" },
+              "&:hover": {
+                transform: "scale(1.05)",
+              },
+            }}
+          >
+            <Image
+              src="/app-store-badge.png"
+              alt="Download on the App Store"
+              width={180}
+              height={70}
+              style={{
+                height: "auto",
+                width: "100%",
+              }}
+              onError={(e) => {
+                e.target.style.display = "none";
+              }}
+            />
+          </Box>
+        </Box>
 
       </Grid>
     </>
