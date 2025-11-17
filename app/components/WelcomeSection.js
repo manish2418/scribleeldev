@@ -29,22 +29,23 @@ const WelcomeSection = () => {
           <Grid  size={{xs:12,md:8}}>
             <Typography
               variant="subtitle2"
+              fontSize={"20px"}
               fontWeight={400}
               color="#003A81"
               textTransform="uppercase"
-              mb={1}
+              mb={2}
               sx={{
                 textAlign: { xs: "center", md: "left" },
                 fontSize: { xs: "12px", md: "16px" }, // desktop unchanged
               }}
             >
-              Every doodle,scribble, and masterpiece become a memory you won't lose.
+              Every doodle, scribble and masterpiece become a memory you won't lose.
             </Typography>
 
             <Typography
               fontWeight={400}
               color="#003A81"
-              textTransform="uppercase"
+              // textTransform="capitilis"
               sx={{
                 textAlign: { xs: "center", md: "left" },
                 fontSize: { xs: "22px", sm: "26px", md: "48px" }, // desktop EXACT size preserved
@@ -52,9 +53,7 @@ const WelcomeSection = () => {
                 px: { xs: 1, md: 0 },
               }}
             >
-              SCRIBLEE TRANSFORMS EVERYDAY DRAWINGS INTO BEAUTIFUL,ANIMATED STORIES AND
-              DIGITAL KEPSAKES -SO YOU NEVER HAVE TO CHOOSE BETWEEN YOUR CHILD'S CREATIVITY
-              AND CLUTTER -FREE HOME.
+              Scriblee transforms everyday drawings into beautiful, animated stories and digital keepsakes—so you never have to choose between your child’s creativity and a clutter-free home.
             </Typography>
           </Grid>
 

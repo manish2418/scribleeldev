@@ -9,6 +9,7 @@ import LeftPhone from "../../public/herosection/leftphone.png"
 import RightPhone from "../../public/herosection/rightphone.png"
 import Phone from "../../public/herosection/phone.svg"
 import { useWaitlistCount } from "../hooks/useWaitlistCount";
+import SparkleText from "./SparkleText";
 
 
 const floatLeft = keyframes`
@@ -92,6 +93,7 @@ const HeroSection = () => {
     fontSize: { xs: "28px", md: "44px" },
     px: { xs: 2, md: 0 },
     opacity: 0,
+    mt:8,
     transform: "translateY(20px)",
     // textTransform:"uppercase",
     animation: "fadeInUp 3.2s ease forwards",
@@ -102,7 +104,7 @@ const HeroSection = () => {
   }}
 >
   Turn Your Child's Art Into Memories You'll 
-  <br /> Keep Forever -Without Piles of Pape
+  <br /> Keep Forever -Without Piles of Paper
 </Typography>
 
 
@@ -119,17 +121,19 @@ const HeroSection = () => {
             color: "#FFFFFF",
             fontSize: { xs: "12px", sm: "14px", md: "18px" },
             opacity: 0.9,
-            px: {xs:2, md:0}
+            px: {xs:2, md:0},
           }}
         >
-          Join {count.toLocaleString()}+ parents saving their kids' memories, beautifully.
+          <SparkleText>
+            Join {count.toLocaleString()}+ parents saving their kids memories, beautifully.
+          </SparkleText>
         </Typography>
 
             
     <Box
       sx={{
         position: "absolute",
-        bottom: {xs:"1.80%", sm:"-10%", md:"-30%"},
+        bottom: {xs:"1.80%", sm:"-10%", md:"-55%"},
         display: { sm:"flex"},
         justifyContent: "center",
         width: "100%",
@@ -152,7 +156,7 @@ const HeroSection = () => {
       >
         <Box
           sx={{
-            width: {xs:"70%", sm:"80%", md:"75%"},
+            width: {xs:"70%", sm:"80%", md:"85%"},
             maxWidth: "900px",
             display: "block",
             margin:"0 auto",
