@@ -6,14 +6,35 @@ import LeftArrow from "../../public/arrowleft.png";
 import RightArrow from "../../public/arrowright.png";
 
 const images = [
-  "/artchild/img1.jpeg",
-  "/artchild/img2.JPG",
-  "/artchild/img3.JPG",
-  "/artchild/img4.jpeg",
-  "/artchild/img5.jpeg",
-  "/artchild/img10.JPG",
-  "/artchild/img7.JPG",
-  "/artchild/img8.JPG",
+  "/artchild/img1.jpg",
+  "/artchild/img2.jpg",
+  "/artchild/img3.jpg",
+  "/artchild/img4.jpg",
+  "/artchild/img5.jpg",
+  "/artchild/img6.jpg",
+  "/artchild/img7.jpg",
+  "/artchild/img8.jpg",
+];
+
+const slideContent = [
+  {
+    text: "Turn Fridge art piles into magical stories you'll",
+    highlight: "Cherish Forever",
+    color: "#003A81",
+    highlightColor: "#F22D91",
+  },
+  {
+    text: "Send as Birthday postcards to family",
+    highlight: "and friends.",
+    color: "#003A81",
+    highlightColor: "#F22D91",
+  },
+  {
+    text: "Every doodle shows how far",
+    highlight: "they've come.",
+    color: "#003A81",
+    highlightColor: "#F22D91",
+  },
 ];
 
 export default function ScrollFunction() {
@@ -42,6 +63,9 @@ const baseTransforms = [
     images[(index + 1) % images.length],
     images[(index + 2) % images.length],
   ];
+
+  const currentSlide = Math.floor(index / 3) % slideContent.length;
+  const content = slideContent[currentSlide];
 
   return (
     <Box
@@ -171,22 +195,28 @@ const baseTransforms = [
         component="p"
         sx={{
           textAlign: "center",
-          color: "#003A81",
-          fontSize: "40px",
+          color: content.color,
+          fontSize: { xs: "24px", sm: "32px", md: "40px" },
           fontWeight: 700,
           marginTop: "40px",
+          transition: "color 0.3s ease",
         }}
       >
-        Turn Fridge art piles into magical stories you'll <br />
-        <Box
-          component="strong"
-          sx={{
-            color: "#F22D91",
-            fontFamily: "'Dancing Script', cursive",
-          }}
-        >
-          Cherish Forever
-        </Box>
+        {content.text}
+        {content.highlight && (
+          <>
+            <br />
+            <Box
+              component="span"
+              sx={{
+                color: content.highlightColor,
+                fontFamily: "'Dancing Script', cursive",
+              }}
+            >
+              {content.highlight}
+            </Box>
+          </>
+        )}
       </Box>
     </Box>
   );
