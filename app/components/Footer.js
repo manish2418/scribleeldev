@@ -38,6 +38,8 @@ const Footer = () => {
           lineHeight={"95%"}
           fontWeight={400}
           textTransform={"uppercase"}
+          mt={2}
+          mb={2}
           sx={{
             fontSize:{xs:"24px", sm:"36px", md:"3.75rem"},
             px:{xs:2, md:0},
@@ -53,6 +55,7 @@ const Footer = () => {
             width: "100%",
             display: "flex",
             justifyContent: "center",
+            marginBottom:"12px",
           }}
         >
           <FooterWaitlistInput />
@@ -65,9 +68,11 @@ const Footer = () => {
           display={"flex"} 
           justifyContent={"center"} 
           alignItems={"center"}
+          mb={2}
           sx={{
             fontSize:{xs:"12px", sm:"14px", md:"1rem"},
             px:{xs:2, md:0}
+
           }}
         >
           Join {count.toLocaleString()}+ parents saving their kids arts memories beautifully.
@@ -76,7 +81,7 @@ const Footer = () => {
 
 
         {/* LOTTIE ANIMATION IN CENTER */}
-      <Box sx={{ mt: { xs: -4, md: -20 }, mb: 5 ,position:"relative"}} >
+      <Box sx={{ mt: { xs: -4, md: -15 }, mb: 5 ,position:"relative"}} >
   <Lottie
     animationData={animationData}
     loop
