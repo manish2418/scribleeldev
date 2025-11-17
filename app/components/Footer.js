@@ -75,7 +75,7 @@ const Footer = () => {
 
           }}
         >
-          Join {count.toLocaleString()}+ parents saving their kids arts memories beautifully.
+          Join {count.toLocaleString()}+ parents saving their kids memories, beautifully.
         </Typography>
         <Countdown targetDate="2026-01-01T00:00:00" />
 
