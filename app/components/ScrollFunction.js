@@ -70,10 +70,10 @@ const baseTransforms = [
   return (
     <Box
       sx={{
-        marginTop: "40px",
+        marginTop: { xs: "20px", sm: "30px", md: "40px" },
         backgroundColor: "#FFEFFA",
-        borderRadius: "24px",
-        padding: "40px 20px",
+        borderRadius: { xs: "16px", sm: "20px", md: "24px" },
+        padding: { xs: "20px 10px", sm: "30px 15px", md: "40px 20px" },
         position: "relative",
       }}
     >
@@ -82,13 +82,23 @@ const baseTransforms = [
         onClick={prevSlide}
         sx={{
           position: "absolute",
-          left: "20px",
+          left: { xs: "5px", sm: "10px", md: "20px" },
           top: "50%",
           transform: "translateY(-50%)",
           cursor: "pointer",
+          zIndex: 30,
         }}
       >
-        <Image src={LeftArrow} alt="prev" width={50} height={50} />
+        <Image 
+          src={LeftArrow} 
+          alt="prev" 
+          width={50} 
+          height={50}
+          style={{
+            width: "clamp(30px, 8vw, 50px)",
+            height: "clamp(30px, 8vw, 50px)",
+          }}
+        />
       </Box>
 
 <Box
@@ -98,39 +108,24 @@ const baseTransforms = [
     alignItems: "center",
     position: "relative",
     width: "100%",
-    height: "320px",
+    height: { xs: "200px", sm: "260px", md: "320px" },
   }}
 >
   {visibleImages.map((src, i) => {
     const isMiddle = i === 1;
     const isHovered = hovered === i;
 
-    let pos = {};
+    const baseTransforms = {
+      xs: i === 0 ? "rotate(-8deg)" : i === 1 ? "translateX(-50%)" : "rotate(8deg)",
+      sm: i === 0 ? "rotate(-9deg)" : i === 1 ? "translateX(-50%)" : "rotate(9deg)",
+      md: i === 0 ? "rotate(-10deg)" : i === 1 ? "translateX(-50%)" : "rotate(10deg)",
+    };
 
-    if (i === 0) {
-      // LEFT IMAGE
-      pos = {
-        left: "calc(50% - 260px)",
-        top: "20px",
-        transform: "rotate(-10deg)",
-      };
-    }
-    if (i === 1) {
-      // CENTER IMAGE
-      pos = {
-        left: "50%",
-        top: "0px",
-        transform: "translateX(-50%)",
-      };
-    }
-    if (i === 2) {
-      // RIGHT IMAGE
-      pos = {
-        left: "calc(50% + 60px)",
-        top: "20px",
-        transform: "rotate(10deg)",
-      };
-    }
+    const hoverTransforms = {
+      xs: i === 1 ? "translateX(-50%) scale(1.1)" : `${baseTransforms.xs} scale(1.1)`,
+      sm: i === 1 ? "translateX(-50%) scale(1.12)" : `${baseTransforms.sm} scale(1.12)`,
+      md: i === 1 ? "translateX(-50%) scale(1.12)" : `${baseTransforms.md} scale(1.12)`,
+    };
 
     return (
       <Box
@@ -139,27 +134,48 @@ const baseTransforms = [
         onMouseLeave={() => setHovered(null)}
         sx={{
           position: "absolute",
-          width: isMiddle ? "260px" : "220px",
-          height: isMiddle ? "260px" : "220px",
-          borderRadius: "20px",
+          width: {
+            xs: isMiddle ? "120px" : "100px",
+            sm: isMiddle ? "180px" : "150px",
+            md: isMiddle ? "260px" : "220px",
+          },
+          height: {
+            xs: isMiddle ? "120px" : "100px",
+            sm: isMiddle ? "180px" : "150px",
+            md: isMiddle ? "260px" : "220px",
+          },
+          borderRadius: { xs: "12px", sm: "16px", md: "20px" },
           overflow: "hidden",
-          border: "4px solid #D948AC",
+          border: { xs: "2px solid #D948AC", sm: "3px solid #D948AC", md: "4px solid #D948AC" },
           transition: "all 0.35s ease",
           cursor: "pointer",
-
-          // 💥 Here is the magic:
-          // We keep the *same base transform* and only add scale on hover
-          transform: `${pos.transform} ${isHovered ? "scale(1.12)" : "scale(1)"}`,
-
-          left: pos.left,
-          top: pos.top,
-
+          left: {
+            xs: i === 0 ? "calc(50% - 110px)" : i === 1 ? "50%" : "calc(50% + 20px)",
+            sm: i === 0 ? "calc(50% - 100px)" : i === 1 ? "50%" : "calc(50% + 40px)",
+            md: i === 0 ? "calc(50% - 260px)" : i === 1 ? "50%" : "calc(50% + 60px)",
+          },
+          top: {
+            xs: i === 1 ? "0px" : "10px",
+            sm: i === 1 ? "0px" : "15px",
+            md: i === 1 ? "0px" : "20px",
+          },
+          transform: isHovered
+            ? {
+                xs: hoverTransforms.xs,
+                sm: hoverTransforms.sm,
+                md: hoverTransforms.md,
+              }
+            : {
+                xs: baseTransforms.xs,
+                sm: baseTransforms.sm,
+                md: baseTransforms.md,
+              },
           zIndex: isHovered ? 20 : isMiddle ? 10 : 5,
           boxShadow: isHovered
-            ? "0 18px 35px rgba(0,0,0,0.35)"
+            ? { xs: "0 8px 20px rgba(0,0,0,0.3)", sm: "0 12px 28px rgba(0,0,0,0.32)", md: "0 18px 35px rgba(0,0,0,0.35)" }
             : isMiddle
-            ? "0 10px 25px rgba(0,0,0,0.25)"
-            : "0 4px 12px rgba(0,0,0,0.15)",
+            ? { xs: "0 4px 15px rgba(0,0,0,0.2)", sm: "0 6px 20px rgba(0,0,0,0.22)", md: "0 10px 25px rgba(0,0,0,0.25)" }
+            : { xs: "0 2px 8px rgba(0,0,0,0.12)", sm: "0 3px 10px rgba(0,0,0,0.14)", md: "0 4px 12px rgba(0,0,0,0.15)" },
         }}
       >
         <Image
@@ -181,13 +197,23 @@ const baseTransforms = [
         onClick={nextSlide}
         sx={{
           position: "absolute",
-          right: "20px",
+          right: { xs: "5px", sm: "10px", md: "20px" },
           top: "50%",
           transform: "translateY(-50%)",
           cursor: "pointer",
+          zIndex: 30,
         }}
       >
-        <Image src={RightArrow} alt="next" width={50} height={50} />
+        <Image 
+          src={RightArrow} 
+          alt="next" 
+          width={50} 
+          height={50}
+          style={{
+            width: "clamp(30px, 8vw, 50px)",
+            height: "clamp(30px, 8vw, 50px)",
+          }}
+        />
       </Box>
 
       {/* Text */}
@@ -196,9 +222,10 @@ const baseTransforms = [
         sx={{
           textAlign: "center",
           color: content.color,
-          fontSize: { xs: "24px", sm: "32px", md: "40px" },
+          fontSize: { xs: "18px", sm: "28px", md: "40px" },
           fontWeight: 700,
-          marginTop: "40px",
+          marginTop: { xs: "20px", sm: "30px", md: "40px" },
+          paddingX: { xs: "10px", sm: "20px", md: "0" },
           transition: "color 0.3s ease",
         }}
       >
