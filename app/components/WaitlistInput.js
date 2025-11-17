@@ -72,7 +72,7 @@ const WaitlistInput = () => {
           disabled={loading}
           sx={{
             flex: 1,
-            color: "#FFFFFF",
+            color: "#FFFFFFB2",
             paddingLeft: { xs: "12px", sm: "20px" }, 
             fontSize: { xs: "14px", sm: "16px", md: "18px" }, 
             "::placeholder": { color: "rgba(255,255,255,0.85)" },
@@ -83,11 +83,11 @@ const WaitlistInput = () => {
           type="submit"
           disabled={loading}
           sx={{
-            backgroundColor: "#0E3E83",
-            color: "#FFFFFF",
+            backgroundColor: "#09448D",
+            color: "rgba(255, 255, 255, 1)",
             fontSize: { xs: "12px", sm: "14px", md: "16px" }, 
             textTransform: "none",
-            borderRadius: "16px",
+            borderRadius: "8px",
             padding: { xs: "8px 14px", sm: "10px 24px" }, 
             whiteSpace: "nowrap",
             "&:hover": { backgroundColor: "#0B336D" },

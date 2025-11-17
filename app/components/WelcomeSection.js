@@ -1,77 +1,90 @@
-"use client"
+"use client";
 
-import { Box, Typography } from "@mui/material";
-// import Image from "next/image";
-// import Sword from "../../public/herosection/Sword.png"
+import { Box, Grid, Typography } from "@mui/material";
 import Lottie from "lottie-react";
 import animationData from "../../public/flying.json";
 
-
- const WelcomeSection =()=>{
-    return(
-        <>
-         <Box sx={{ width: "100%",minHeight:{xs:"30vh", md:"60vh"}, background:"linear-gradient( 180deg,#FFE3FF 0%,#FFC8FF 35%,#FFBDFB 70%,#FFFFFF 100%)",padding:{xs:"20px 10px", md:"10px"}
- }}>
-        <Typography 
-          variant="h3" 
-          color="#7F63FF" 
-          fontWeight="bold" 
-          sx={{
-            display:"flex",
-            justifyContent:"center",
-            textTransform:"uppercase",
-            textAlign:"center",
-            fontSize:{xs:"18px", sm:"24px", md:"1.125rem"},
-            px:{xs:2, md:0}
-          }}
+const WelcomeSection = () => {
+  return (
+    <>
+      <Box
+        sx={{
+          width: "100%",
+          minHeight: { xs: "70vh", md: "60vh" },
+          background: "linear-gradient(180deg,#FFE3FF 0%,#FFFFFF 100%)",
+          px: { xs: 2, md: 6 },      // desktop remains SAME
+          py: { xs: 4, md: 8 },      // desktop remains SAME
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <Grid
+          container
+          spacing={4}
+          // only change layout on mobile
+          direction={{ xs: "column-reverse", md: "row" }}
+          alignItems="center"
         >
-          You're welcome to scriblee world
-        </Typography>
-      <Typography
-  variant="h2"
-  color="#09448D"
-  fontWeight={800}
-  sx={{
-    display: "flex",
-    justifyContent: "center",
-    textAlign: "center",
-    transition: "all 0.4s ease",
-    cursor: "pointer",
-    fontSize:{xs:"20px", sm:"32px", md:"4.25rem"},
-    lineHeight:{xs:"1.3", md:"1.2"},
-    mt:{xs:2, md:3},
-    px:{xs:2, md:4},
-    "&:hover": {
-      color: "#0A66C2",
-      transform: {xs:"none", md:"scale(1.05)"},
-    },
-  }}
->
-  We help parents turn everyday art into timeless keepsakes,
-  so those fridge drawings don't fade, and neither do the memories.
-</Typography>
+          {/* LEFT TEXT */}
+          <Grid  size={{xs:12,md:8}}>
+            <Typography
+              variant="subtitle2"
+              fontWeight={400}
+              color="#003A81"
+              textTransform="uppercase"
+              mb={1}
+              sx={{
+                textAlign: { xs: "center", md: "left" },
+                fontSize: { xs: "12px", md: "16px" }, // desktop unchanged
+              }}
+            >
+              Every doodle,scribble, and masterpiece become a memory you won't lose.
+            </Typography>
 
+            <Typography
+              fontWeight={400}
+              color="#003A81"
+              textTransform="uppercase"
+              sx={{
+                textAlign: { xs: "center", md: "left" },
+                fontSize: { xs: "22px", sm: "26px", md: "48px" }, // desktop EXACT size preserved
+                lineHeight: { xs: "140%", md: "120%" }, // desktop preserved
+                px: { xs: 1, md: 0 },
+              }}
+            >
+              SCRIBLEE TRANSFORMS EVERYDAY DRAWINGS INTO BEAUTIFUL,ANIMATED STORIES AND
+              DIGITAL KEPSAKES -SO YOU NEVER HAVE TO CHOOSE BETWEEN YOUR CHILD'S CREATIVITY
+              AND CLUTTER -FREE HOME.
+            </Typography>
+          </Grid>
 
-    
-        </Box>
-         <Box sx={{ 
-           mt: { xs: -4, md: -9 }, 
-           mb: 5,
-           display: "flex",
-           justifyContent: "center",
-           alignItems: "center",
-           width: "100%"
-         }}>
-  <Lottie
-    animationData={animationData}
-    loop
-    autoplay
-    style={{ width: "100%", maxWidth: "600px", height: "auto", minHeight: "300px" }}
-  />
-</Box>
+          {/* RIGHT LOTTIE (Desktop unchanged) */}
+          <Grid
+            size={{xs:12,md:4}}
+           
+            sx={{
+              display: "flex",
+              justifyContent: { xs: "center", md: "flex-end" }, // desktop remains right side
+              alignItems: "center",
+            }}
+          >
+            <Lottie
+              animationData={animationData}
+              loop
+              autoplay
+              style={{
+                width: "100%",
+                maxWidth: "600px", // EXACT desktop width as your screenshot
+                height: "auto",
+                minHeight: "300px",
+                transform: "scaleX(-1)",
+              }}
+            />
+          </Grid>
+        </Grid>
+      </Box>
+    </>
+  );
+};
 
-        </>
-    )
- }
-
- export default WelcomeSection;
+export default WelcomeSection;

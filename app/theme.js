@@ -10,13 +10,13 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "'Bricolage Grotesque', sans-serif",
+    fontFamily: "'Fredoka One', cursive",
     h1: {
       fontSize: "4.8rem",
       fontWeight: 700,
     },
     h2: {
-      fontSize: "4.25rem",
+      fontSize: "2.75rem",
       fontWeight: 600,
     },
     h3: {

@@ -27,7 +27,7 @@ const HeroSection = () => {
   const { count } = useWaitlistCount();
   
   return (
-    <Box sx={{ width: "100%",minHeight:{xs:"auto", sm:"auto", md:"180vh"}, position: "relative",background:"linear-gradient(179.2deg, #FFC1FF 73.06%, #FFFFFF 114.87%)",padding:"10px", pb:{xs:0, sm:0, md:0}
+    <Box sx={{ width: "100%",minHeight:{xs:"auto", sm:"auto", md:"180vh"}, position: "relative",background:"linear-gradient(179.2deg, #FFC1FF 73.06%, #FFFFFF 114.87%)",padding:"0px", pb:{xs:0, sm:0, md:0}
  }}>
 
       {/* ====== TOP SECTION with BG IMAGE ====== */}
@@ -86,13 +86,14 @@ const HeroSection = () => {
        <Typography
   sx={{
     mt: 3,
-    fontWeight: 800,
+    fontWeight: 400,
     color: "#FFFFFF",
-    lineHeight: { xs: "48px", md: "95%" },
-    fontSize: { xs: "28px", md: "64px" },
+    lineHeight: { xs: "48px", md: "100%" },
+    fontSize: { xs: "28px", md: "44px" },
     px: { xs: 2, md: 0 },
     opacity: 0,
     transform: "translateY(20px)",
+    // textTransform:"uppercase",
     animation: "fadeInUp 3.2s ease forwards",
     "@keyframes fadeInUp": {
       from: { opacity: 0, transform: "translateY(20px)" },
@@ -100,8 +101,8 @@ const HeroSection = () => {
     },
   }}
 >
-  Keep your kids' Creativity
-  <br /> Alive, Without the Clutter
+  Turn Your Child's Art Into Memories You'll 
+  <br /> Keep Forever -Without Piles of Pape
 </Typography>
 
 
@@ -128,11 +129,12 @@ const HeroSection = () => {
     <Box
       sx={{
         position: "absolute",
-        bottom: {xs:"5%", sm:"-10%", md:"-40%"},
+        bottom: {xs:"1.80%", sm:"-10%", md:"-30%"},
         display: { sm:"flex"},
         justifyContent: "center",
         width: "100%",
         right: {xs:"0%", sm:"-4%", md:"0%"},
+       
       }}
     >
       <Box
@@ -150,10 +152,11 @@ const HeroSection = () => {
       >
         <Box
           sx={{
-            width: {xs:"95%", sm:"85%", md:"75%"},
+            width: {xs:"70%", sm:"80%", md:"75%"},
             maxWidth: "900px",
             display: "block",
-            margin:"0 auto"
+            margin:"0 auto",
+            // mt:{xs:"10px"}
           }}
         >
           <Image

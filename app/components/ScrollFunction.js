@@ -1,12 +1,9 @@
 "use client";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-import "swiper/css";
 import Image from "next/image";
-import { useState, useRef } from "react";
 import { Box } from "@mui/material";
-import RightArrow from "../../public/arrowright.png"
-import LeftArrow from "../../public/arrowleft.png"
+import { useState } from "react";
+import LeftArrow from "../../public/arrowleft.png";
+import RightArrow from "../../public/arrowright.png";
 
 const images = [
   "/artchild/img1.jpeg",
@@ -16,181 +13,180 @@ const images = [
   "/artchild/img5.jpeg",
   "/artchild/img10.JPG",
   "/artchild/img7.JPG",
-   "/artchild/img8.JPG",
-
+  "/artchild/img8.JPG",
 ];
 
 export default function ScrollFunction() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const swiperRef = useRef(null);
+  const [index, setIndex] = useState(0);
+const [hovered, setHovered] = useState(null);
+
+const baseTransforms = [
+  "rotate(-12deg) translate(-120px, 20px)", // left image
+  "translate(-50%, 0px) scale(1.05)",       // center image
+  "rotate(12deg) translate(120px, 20px)",   // right image
+];
 
 
-  const arrowButtonStyle = {
-    position: "absolute",
-    top: "50%",
-    transform: "translateY(-50%)",
-    width: "50px",
-    height: "50px",
-    borderRadius: "50%",
-    backgroundColor: "white",
-    boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    cursor: "pointer",
-    zIndex: 10,
+  const nextSlide = () => {
+    setIndex((prev) => (prev + 3) % images.length);
   };
 
-  const leftArrowStyle = { ...arrowButtonStyle, left: "20px" };
-  const rightArrowStyle = { ...arrowButtonStyle, right: "20px" };
+  const prevSlide = () => {
+    setIndex((prev) =>
+      prev - 3 < 0 ? images.length - 3 : prev - 3
+    );
+  };
+
+  const visibleImages = [
+    images[index],
+    images[(index + 1) % images.length],
+    images[(index + 2) % images.length],
+  ];
 
   return (
     <Box
       sx={{
         marginTop: "40px",
-        minHeight: {xs: "60vh", md: "80vh"},
         backgroundColor: "#FFEFFA",
         borderRadius: "24px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: {xs: "30px 10px", sm: "40px 15px", md: "50px 20px"},
-        overflow: "hidden",
+        padding: "40px 20px",
         position: "relative",
       }}
     >
+      {/* Arrow Left */}
       <Box
+        onClick={prevSlide}
         sx={{
-          width: "100%",
-          maxWidth: "900px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          position: "relative",
-          gap: {xs: "5px", sm: "10px", md: "20px"},
+          position: "absolute",
+          left: "20px",
+          top: "50%",
+          transform: "translateY(-50%)",
+          cursor: "pointer",
         }}
       >
-        {/* Left Arrow */}
-        <Box
-          onClick={() => swiperRef.current?.slidePrev()}
-          sx={{
-            display: {xs:"none", sm:"block"},
-            cursor: "pointer",
-            zIndex: 10,
-          }}
-        >
-          <Image
-             src={LeftArrow}
-            alt="Previous"
-            width={50}
-            height={50}
-            unoptimized
-            style={{width: "100%", height: "auto", maxWidth: "50px"}}
-          />
-        </Box>
-
-        {/* Swiper Carousel */}
-        <Swiper
-          modules={[Navigation]}
-          onBeforeInit={(swiper) => {
-            swiperRef.current = swiper;
-          }}
-          loop
-          centeredSlides
-          slidesPerView={3}
-          spaceBetween={30}
-          onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-          style={{
-            width: "100%",
-            padding: "40px 0",
-          }}
-          breakpoints={{
-            0: { slidesPerView: 1 },
-            600: { slidesPerView: 2 },
-            900: { slidesPerView: 3 },
-          }}
-        >
-          {images.map((src, i) => {
-            const isActive = i === activeIndex;
-            const rotate = isActive
-              ? "rotate(0deg)"
-              : i % 2 === 0
-              ? "rotate(8deg)"
-              : "rotate(-8deg)";
-            const scale = isActive ? "scale(1.1)" : "scale(0.9)";
-            const opacity = isActive ? 1 : 0.6;
-
-            return (
-              <SwiperSlide
-                key={i}
-                style={{ display: "flex", justifyContent: "center" }}
-              >
-                <Box
-                  sx={{
-                    position: "relative",
-                    width: {xs: "180px", sm: "200px", md: "220px"},
-                    height: {xs: "230px", sm: "250px", md: "280px"},
-                    borderRadius: "20px",
-                    overflow: "hidden",
-                    border: "4px solid #D948AC",
-                    transform: `${rotate} ${scale}`,
-                    transition: "all 0.5s ease",
-                    opacity,
-                    boxShadow: isActive
-                      ? "0 8px 18px rgba(0,0,0,0.2)"
-                      : "0 4px 10px rgba(0,0,0,0.1)",
-                  }}
-                >
-                  <Image
-                    src={src}
-                    alt={`Fridge Art ${i}`}
-                    fill
-                    unoptimized
-                    style={{
-                      objectFit: "cover",
-                    }}
-                  />
-                </Box>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
-
-        {/* Right Arrow */}
-        <Box
-          onClick={() => swiperRef.current?.slideNext()}
-          sx={{
-            display: {xs:"none", sm:"block"},
-            cursor: "pointer",
-            zIndex: 10,
-          }}
-        >
-          <Image
-            src={RightArrow}
-            alt="Next"
-            width={50}
-            height={50}
-            unoptimized
-            style={{width: "100%", height: "auto", maxWidth: "50px"}}
-          />
-        </Box>
+        <Image src={LeftArrow} alt="prev" width={50} height={50} />
       </Box>
 
+<Box
+  sx={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    position: "relative",
+    width: "100%",
+    height: "320px",
+  }}
+>
+  {visibleImages.map((src, i) => {
+    const isMiddle = i === 1;
+    const isHovered = hovered === i;
+
+    let pos = {};
+
+    if (i === 0) {
+      // LEFT IMAGE
+      pos = {
+        left: "calc(50% - 260px)",
+        top: "20px",
+        transform: "rotate(-10deg)",
+      };
+    }
+    if (i === 1) {
+      // CENTER IMAGE
+      pos = {
+        left: "50%",
+        top: "0px",
+        transform: "translateX(-50%)",
+      };
+    }
+    if (i === 2) {
+      // RIGHT IMAGE
+      pos = {
+        left: "calc(50% + 60px)",
+        top: "20px",
+        transform: "rotate(10deg)",
+      };
+    }
+
+    return (
+      <Box
+        key={i}
+        onMouseEnter={() => setHovered(i)}
+        onMouseLeave={() => setHovered(null)}
+        sx={{
+          position: "absolute",
+          width: isMiddle ? "260px" : "220px",
+          height: isMiddle ? "260px" : "220px",
+          borderRadius: "20px",
+          overflow: "hidden",
+          border: "4px solid #D948AC",
+          transition: "all 0.35s ease",
+          cursor: "pointer",
+
+          // 💥 Here is the magic:
+          // We keep the *same base transform* and only add scale on hover
+          transform: `${pos.transform} ${isHovered ? "scale(1.12)" : "scale(1)"}`,
+
+          left: pos.left,
+          top: pos.top,
+
+          zIndex: isHovered ? 20 : isMiddle ? 10 : 5,
+          boxShadow: isHovered
+            ? "0 18px 35px rgba(0,0,0,0.35)"
+            : isMiddle
+            ? "0 10px 25px rgba(0,0,0,0.25)"
+            : "0 4px 12px rgba(0,0,0,0.15)",
+        }}
+      >
+        <Image
+          src={src}
+          alt="fridge art"
+          fill
+          unoptimized
+          style={{ objectFit: "cover" }}
+        />
+      </Box>
+    );
+  })}
+</Box>
+
+
+
+      {/* Arrow Right */}
+      <Box
+        onClick={nextSlide}
+        sx={{
+          position: "absolute",
+          right: "20px",
+          top: "50%",
+          transform: "translateY(-50%)",
+          cursor: "pointer",
+        }}
+      >
+        <Image src={RightArrow} alt="next" width={50} height={50} />
+      </Box>
+
+      {/* Text */}
       <Box
         component="p"
         sx={{
           textAlign: "center",
-          color: "#D948AC",
-          fontSize: {xs: "16px", sm: "18px", md: "22px"},
-          fontWeight: 600,
-          marginTop: {xs: "20px", md: "40px"},
-          lineHeight: "1.4",
-          px: {xs: "10px", md: "0"},
+          color: "#003A81",
+          fontSize: "40px",
+          fontWeight: 700,
+          marginTop: "40px",
         }}
       >
         Turn Fridge art piles into magical stories you'll <br />
-        <strong>Cherish Forever</strong>
+        <Box
+          component="strong"
+          sx={{
+            color: "#F22D91",
+            fontFamily: "'Dancing Script', cursive",
+          }}
+        >
+          Cherish Forever
+        </Box>
       </Box>
     </Box>
   );
