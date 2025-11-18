@@ -7,7 +7,7 @@ import Cloud from "../../public/herosection/cloud.svg";
 import WaitlistInput from "./WaitlistInput";
 import LeftPhone from "../../public/herosection/leftphone.png"
 import RightPhone from "../../public/herosection/rightphone.png"
-import Phone from "../../public/herosection/phone.svg"
+import Phone from "../../public/herosection/phone.png"
 import { useWaitlistCount } from "../hooks/useWaitlistCount";
 import SparkleText from "./SparkleText";
 
@@ -167,6 +167,7 @@ const HeroSection = () => {
             src={Phone}
             height={1000}
             width={900}
+            unoptimized
             alt="phone"
             style={{
               width: "100%",
