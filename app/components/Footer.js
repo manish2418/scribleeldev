@@ -7,6 +7,7 @@ import FooterWaitlistInput from "./FooterWaitlistInput";
 import { useWaitlistCount } from "../hooks/useWaitlistCount";
 import Countdown from "./Countdown";
 import ComingSoonBadge from "./ComingSoonBadge";
+import SparkleText from "./SparkleText";
 
 const Footer = () => {
   const { count } = useWaitlistCount();
@@ -75,7 +76,9 @@ const Footer = () => {
 
           }}
         >
+          <SparkleText>
           Join {count.toLocaleString()}+ parents saving their kids memories, beautifully.
+          </SparkleText>
         </Typography>
         <Countdown targetDate="2026-01-01T00:00:00" />
 
