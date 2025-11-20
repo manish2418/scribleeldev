@@ -244,7 +244,7 @@ const HeroSection = () => {
               sx={{
                 position: "absolute",
                 bottom: { xs: "-6px", sm: "-8px", md: "-12px" },
-                right: { xs: "4px", sm: "6px", md: "-50px" },
+                right: { xs: "-40px", sm: "6px", md: "-50px" },
                 backgroundColor: "#5E64FF",
                 borderRadius: { xs: "12px", sm: "14px", md: "16px" },
                 padding: { xs: "4px 10px", sm: "5px 12px", md: "6px 14px" },
