@@ -275,7 +275,7 @@ const HeroSection = () => {
     <Box
       sx={{
         position: "absolute",
-        bottom: {xs:"1.30%", sm:"-20%", md:"-60%"},
+        bottom: {xs:"1.30%", sm:"-20%", md:"-60%",xl:"-70%"},
         display: { sm:"flex"},
         justifyContent: "center",
         width: "90%",
@@ -298,7 +298,7 @@ const HeroSection = () => {
       >
         <Box
           sx={{
-            width: {xs:"60%", sm:"80%", md:"95%"},
+            width: {xs:"60%", sm:"80%", md:"95%",xl:"100%"},
             maxWidth: "900px",
             display: "block",
             margin:"0 auto",
