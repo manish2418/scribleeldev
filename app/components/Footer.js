@@ -77,7 +77,7 @@ const Footer = () => {
           }}
         >
           <SparkleText>
-          Join {count.toLocaleString()}+ parents saving their kids memories, beautifully.
+          Join {count.toLocaleString()}+ parents saving their kids memories.
           </SparkleText>
         </Typography>
         <Countdown targetDate="2026-01-01T00:00:00" />

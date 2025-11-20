@@ -28,18 +28,18 @@ const WelcomeSection = () => {
           {/* LEFT TEXT */}
           <Grid  size={{xs:12,md:8}}>
             <Typography
-              variant="subtitle2"
-              fontSize={"20px"}
-              fontWeight={400}
-              color="#003A81"
-              textTransform="uppercase"
+              variant="h2"
+              color="#F22D91"
+              // textTransform="uppercase"
               mb={2}
               sx={{
                 textAlign: { xs: "center", md: "left" },
-                fontSize: { xs: "12px", md: "16px" }, // desktop unchanged
+                fontSize: { xs: "24px", md: "46px" },
+                fontWeight: "bold",
+                fontFamily: "'Dancing Script', cursive",
               }}
             >
-              Every doodle, scribble and masterpiece become a memory you won't lose.
+              You're welcome to scriblee world
             </Typography>
 
             <Typography

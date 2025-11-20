@@ -8,6 +8,8 @@ import WaitlistInput from "./WaitlistInput";
 import LeftPhone from "../../public/herosection/leftphone.png"
 import RightPhone from "../../public/herosection/rightphone.png"
 import Phone from "../../public/herosection/phone.png"
+import GPlayLogo from "../../public/herosection/gplay.svg";
+import AppleLogo from "../../public/herosection/applelogo.svg";
 import { useWaitlistCount } from "../hooks/useWaitlistCount";
 import SparkleText from "./SparkleText";
 
@@ -125,18 +127,158 @@ const HeroSection = () => {
           }}
         >
           <SparkleText>
-            Join {count.toLocaleString()}+ parents saving their kids memories, beautifully.
+            Join {count.toLocaleString()}+ parents saving their kids memories.
           </SparkleText>
         </Typography>
+
+        {/* App Store Buttons */}
+        <Box
+          sx={{
+            display: "flex",
+            gap: { xs: "12px", sm: "16px", md: "20px" },
+            mt: { xs: 3, md: 4 },
+            mb: { xs: 2, md: 0 },
+            justifyContent: "center",
+            alignItems: "center",
+            flexWrap: "wrap",
+            zIndex: 10,
+          }}
+        >
+          {/* Google Play Button */}
+          <Box
+            sx={{
+              backgroundColor: "#FFFFFF",
+              borderRadius: "8px",
+              padding: { xs: "10px 16px", sm: "12px 20px", md: "14px 24px" },
+              display: "flex",
+              alignItems: "center",
+              gap: { xs: "8px", sm: "10px", md: "12px" },
+              cursor: "pointer",
+              transition: "transform 0.2s ease, box-shadow 0.2s ease",
+              "&:hover": {
+                transform: "scale(1.05)",
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+              },
+            }}
+          >
+            <Box
+              sx={{
+                width: { xs: "24px", sm: "28px", md: "32px" },
+                height: { xs: "24px", sm: "28px", md: "32px" },
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Image
+                src={GPlayLogo}
+                alt="Google Play"
+                width={32}
+                height={32}
+                style={{ width: "100%", height: "100%" }}
+              />
+            </Box>
+            <Typography
+              sx={{
+                color: "#7D63FD",
+                fontSize: { xs: "14px", sm: "16px", md: "16px" },
+                fontWeight: 400,
+                // fontFamily: "'Inter', sans-serif",
+                textTransform: "none",
+              }}
+            >
+              Google play
+            </Typography>
+          </Box>
+
+          {/* App Store Button */}
+          <Box
+            sx={{
+              backgroundColor: "#FF6B9D",
+              borderRadius: "8px",
+              padding: { xs: "10px 16px", sm: "12px 20px", md: "14px 24px" },
+              display: "flex",
+              alignItems: "center",
+              gap: { xs: "8px", sm: "10px", md: "12px" },
+              cursor: "pointer",
+              position: "relative",
+              // border: "2px dashed #FFFFFF",
+              transition: "transform 0.2s ease, box-shadow 0.2s ease",
+              "&:hover": {
+                transform: "scale(1.05)",
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+              },
+            }}
+          >
+            <Box
+              sx={{
+                width: { xs: "24px", sm: "28px", md: "32px" },
+                height: { xs: "24px", sm: "28px", md: "32px" },
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Image
+                src={AppleLogo}
+                alt="App Store"
+                width={32}
+                height={32}
+                style={{ width: "100%", height: "100%", filter: "brightness(0) invert(1)" }}
+              />
+            </Box>
+            <Typography
+              sx={{
+                color: "#FFFFFF",
+                fontSize: { xs: "14px", sm: "16px", md: "16px" },
+                fontWeight: 400,
+                // fontFamily: "'Inter', sans-serif",
+                textTransform: "none",
+              }}
+            >
+              App Store
+            </Typography>
+            
+            {/* COMING SOON Banner */}
+            <Box
+              sx={{
+                position: "absolute",
+                bottom: { xs: "-6px", sm: "-8px", md: "-12px" },
+                right: { xs: "4px", sm: "6px", md: "-50px" },
+                backgroundColor: "#5E64FF",
+                borderRadius: { xs: "12px", sm: "14px", md: "16px" },
+                padding: { xs: "4px 10px", sm: "5px 12px", md: "6px 14px" },
+                border: "2px dashed #FFFFFF",
+                transform: "rotate(-20deg)",
+                zIndex: 11,
+                minWidth: { xs: "70px", sm: "80px", md: "90px" },
+              }}
+            >
+              <Typography
+                sx={{
+                  color: "#FFFFFF",
+                  fontSize: { xs: "9px", sm: "10px", md: "14px" },
+                  fontWeight: 400,
+                  // fontFamily: "'Inter', sans-serif",
+                  whiteSpace: "nowrap",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.5px",
+                }}
+              >
+                COMING SOON
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
 
             
     <Box
       sx={{
         position: "absolute",
-        bottom: {xs:"1.80%", sm:"-10%", md:"-55%"},
+        bottom: {xs:"1.30%", sm:"-20%", md:"-60%"},
         display: { sm:"flex"},
         justifyContent: "center",
-        width: "100%",
+        width: "90%",
         right: {xs:"0%", sm:"-4%", md:"0%"},
        
       }}
@@ -156,7 +298,7 @@ const HeroSection = () => {
       >
         <Box
           sx={{
-            width: {xs:"70%", sm:"80%", md:"85%"},
+            width: {xs:"60%", sm:"80%", md:"95%"},
             maxWidth: "900px",
             display: "block",
             margin:"0 auto",
@@ -170,7 +312,7 @@ const HeroSection = () => {
             unoptimized
             alt="phone"
             style={{
-              width: "100%",
+              width: "85%",
               height: "auto",
             }}
           />

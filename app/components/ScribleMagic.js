@@ -51,19 +51,7 @@ const ScribleMagic =()=>{
               },
             }}
           />
-<Typography 
-  variant="h3" 
-  color="#003A81" 
-  textTransform={"uppercase"} 
-  display={"flex"} 
-  justifyContent={"center"} 
-  mt={2}
-  sx={{
-    fontSize:{xs:"20px", sm:"28px", md:"1.125rem"}
-  }}
->
-  Scriblee Magic
-</Typography>
+
 <Typography 
   variant="subtitle1" 
   color="#09448D" 

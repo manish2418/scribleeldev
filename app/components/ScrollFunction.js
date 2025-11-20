@@ -14,6 +14,7 @@ const images = [
   "/artchild/img6.jpg",
   "/artchild/img7.jpg",
   "/artchild/img8.jpg",
+  "/artchild/img9.jpg",
 ];
 
 const slideContent = [
@@ -39,7 +40,8 @@ const slideContent = [
 
 export default function ScrollFunction() {
   const [index, setIndex] = useState(0);
-const [hovered, setHovered] = useState(null);
+  const [hovered, setHovered] = useState(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
 const baseTransforms = [
   "rotate(-12deg) translate(-120px, 20px)", // left image
@@ -49,20 +51,41 @@ const baseTransforms = [
 
 
   const nextSlide = () => {
-    setIndex((prev) => (prev + 3) % images.length);
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setIndex((prev) => {
+        if (prev === 0) return 3;
+        if (prev === 3) return 6;
+        return prev;
+      });
+      setTimeout(() => setIsTransitioning(false), 50);
+    }, 50);
   };
 
   const prevSlide = () => {
-    setIndex((prev) =>
-      prev - 3 < 0 ? images.length - 3 : prev - 3
-    );
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setIndex((prev) => {
+        if (prev === 6) return 3;
+        if (prev === 3) return 0;
+        return prev;
+      });
+      setTimeout(() => setIsTransitioning(false), 50);
+    }, 50);
   };
 
-  const visibleImages = [
-    images[index],
-    images[(index + 1) % images.length],
-    images[(index + 2) % images.length],
-  ];
+  const getVisibleImages = () => {
+    if (index === 6) {
+      return [images[6], images[7], images[8]];
+    }
+    return [
+      images[index],
+      images[index + 1],
+      images[index + 2],
+    ];
+  };
+
+  const visibleImages = getVisibleImages();
 
   const currentSlide = Math.floor(index / 3) % slideContent.length;
   const content = slideContent[currentSlide];
@@ -114,11 +137,12 @@ const baseTransforms = [
   {visibleImages.map((src, i) => {
     const isMiddle = i === 1;
     const isHovered = hovered === i;
+    const isLastSlide = index === 6;
 
     const baseTransforms = {
-      xs: i === 0 ? "rotate(-8deg)" : i === 1 ? "translateX(-50%)" : "rotate(8deg)",
-      sm: i === 0 ? "rotate(-9deg)" : i === 1 ? "translateX(-50%)" : "rotate(9deg)",
-      md: i === 0 ? "rotate(-10deg)" : i === 1 ? "translateX(-50%)" : "rotate(10deg)",
+      xs: i === 0 ? "rotate(-5deg)" : i === 1 ? "translateX(-50%)" : "rotate(8deg)",
+      sm: i === 0 ? "rotate(-6deg)" : i === 1 ? "translateX(-50%)" : "rotate(9deg)",
+      md: i === 0 ? "rotate(-7deg)" : i === 1 ? "translateX(-50%)" : "rotate(10deg)",
     };
 
     const hoverTransforms = {
@@ -129,30 +153,31 @@ const baseTransforms = [
 
     return (
       <Box
-        key={i}
+        key={`${index}-${i}-${src}`}
         onMouseEnter={() => setHovered(i)}
         onMouseLeave={() => setHovered(null)}
         sx={{
           position: "absolute",
           width: {
-            xs: isMiddle ? "120px" : "100px",
-            sm: isMiddle ? "180px" : "150px",
-            md: isMiddle ? "260px" : "220px",
+            xs: isMiddle ? "120px" : i === 0 ? "110px" : "100px",
+            sm: isMiddle ? "180px" : i === 0 ? "170px" : "150px",
+            md: isMiddle ? "260px" : i === 0 ? "240px" : "220px",
           },
           height: {
-            xs: isMiddle ? "120px" : "100px",
-            sm: isMiddle ? "180px" : "150px",
-            md: isMiddle ? "260px" : "220px",
+            xs: isMiddle ? "120px" : i === 0 ? "110px" : "100px",
+            sm: isMiddle ? "180px" : i === 0 ? "170px" : "150px",
+            md: isMiddle ? "260px" : i === 0 ? "240px" : "220px",
           },
           borderRadius: { xs: "12px", sm: "16px", md: "20px" },
           overflow: "hidden",
           border: { xs: "2px solid #D948AC", sm: "3px solid #D948AC", md: "4px solid #D948AC" },
-          transition: "all 0.35s ease",
+          transition: "all 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
           cursor: "pointer",
+          opacity: isTransitioning ? 0.7 : 1,
           left: {
             xs: i === 0 ? "calc(50% - 110px)" : i === 1 ? "50%" : "calc(50% + 20px)",
             sm: i === 0 ? "calc(50% - 100px)" : i === 1 ? "50%" : "calc(50% + 40px)",
-            md: i === 0 ? "calc(50% - 260px)" : i === 1 ? "50%" : "calc(50% + 60px)",
+            md: i === 0 ? "calc(45% - 260px)" : i === 1 ? "50%" : "calc(53% + 60px)",
           },
           top: {
             xs: i === 1 ? "0px" : "10px",
@@ -170,11 +195,13 @@ const baseTransforms = [
                 sm: baseTransforms.sm,
                 md: baseTransforms.md,
               },
-          zIndex: isHovered ? 20 : isMiddle ? 10 : 5,
+          zIndex: isHovered ? 20 : isMiddle ? 10 : i === 0 ? 7 : 5,
           boxShadow: isHovered
             ? { xs: "0 8px 20px rgba(0,0,0,0.3)", sm: "0 12px 28px rgba(0,0,0,0.32)", md: "0 18px 35px rgba(0,0,0,0.35)" }
             : isMiddle
             ? { xs: "0 4px 15px rgba(0,0,0,0.2)", sm: "0 6px 20px rgba(0,0,0,0.22)", md: "0 10px 25px rgba(0,0,0,0.25)" }
+            : i === 0 
+            ? { xs: "0 4px 12px rgba(0,0,0,0.18)", sm: "0 5px 15px rgba(0,0,0,0.2)", md: "0 6px 18px rgba(0,0,0,0.22)" }
             : { xs: "0 2px 8px rgba(0,0,0,0.12)", sm: "0 3px 10px rgba(0,0,0,0.14)", md: "0 4px 12px rgba(0,0,0,0.15)" },
         }}
       >
@@ -183,7 +210,10 @@ const baseTransforms = [
           alt="fridge art"
           fill
           unoptimized
-          style={{ objectFit: "cover" }}
+          style={{ 
+            objectFit: "cover",
+            transition: "opacity 0.6s ease-in-out",
+          }}
         />
       </Box>
     );

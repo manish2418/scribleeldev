@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Box, InputBase, Button, Typography } from "@mui/material";
-import Lottie from "lottie-react";
+import { Box, InputBase, Button, Typography, IconButton } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import successAnimation from "../../public/sucess.json";
 import SparkleText from "./SparkleText";
 
 const WaitlistInput = () => {
@@ -143,6 +143,7 @@ const WaitlistInput = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
+              onClick={() => setShowSuccessAnimation(false)}
               sx={{
                 position: "fixed",
                 top: 0,
@@ -153,7 +154,7 @@ const WaitlistInput = () => {
                 backdropFilter: "blur(8px)",
                 WebkitBackdropFilter: "blur(8px)",
                 zIndex: 9998,
-                pointerEvents: "none",
+                cursor: "pointer",
               }}
             />
             <Box
@@ -163,7 +164,7 @@ const WaitlistInput = () => {
                 left: "50%",
                 transform: "translate(-50%, -50%)",
                 zIndex: 9999,
-                pointerEvents: "none",
+                pointerEvents: "auto",
               }}
             >
             <motion.div
@@ -173,40 +174,69 @@ const WaitlistInput = () => {
               transition={{ duration: 0.3 }}
             >
               <Box
+                onClick={(e) => e.stopPropagation()}
                 sx={{
+                  backgroundColor: "#FFFFFF",
+                  border: "3px solid #87CEEB",
+                  borderRadius: "24px",
+                  padding: { xs: "24px", sm: "32px", md: "40px" },
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
                   justifyContent: "center",
+                  position: "relative",
+                  width: { xs: "320px", sm: "400px", md: "480px" },
+                  maxWidth: "90vw",
                 }}
               >
-                <Box
+                <IconButton
+                  onClick={() => setShowSuccessAnimation(false)}
                   sx={{
-                    width: { xs: "250px", sm: "300px", md: "400px" },
-                    height: { xs: "250px", sm: "300px", md: "400px" },
+                    position: "absolute",
+                    top: { xs: "12px", sm: "16px" },
+                    right: { xs: "12px", sm: "16px" },
+                    color: "#003A81",
+                    "&:hover": {
+                      backgroundColor: "rgba(0, 58, 129, 0.1)",
+                    },
                   }}
                 >
-                  <Lottie
-                    animationData={successAnimation}
-                    loop={false}
-                    autoplay={true}
+                  <CloseIcon />
+                </IconButton>
+
+                <Box
+                  sx={{
+                    width: { xs: "200px", sm: "250px", md: "300px" },
+                    height: { xs: "200px", sm: "250px", md: "300px" },
+                    position: "relative",
+                    marginTop: { xs: "8px", sm: "12px" },
+                    marginBottom: { xs: "16px", sm: "20px" },
+                  }}
+                >
+                  <Image
+                    src="/sucess.gif"
+                    alt="Success animation"
+                    fill
+                    unoptimized
                     style={{
-                      width: "100%",
-                      height: "100%",
+                      objectFit: "contain",
                     }}
                   />
                 </Box>
+
                 <Typography
                   sx={{
-                    fontSize: { xs: "20px", sm: "24px", md: "28px" },
-                    fontWeight: 600,
-                    color: "#FFFFFF",
-                    marginTop: { xs: "10px", sm: "15px", md: "20px" },
+                    fontSize: { xs: "18px", sm: "22px", md: "36.4px" },
+                    fontWeight: 400,
+                    color: "#003A81",
                     textAlign: "center",
                     textTransform: "uppercase",
+                    lineHeight: 1.2,
                   }}
                 >
-                  <SparkleText>Welcome to Scriblee Family</SparkleText>
+                  WELCOME TO
+                  <br />
+                  SCRIBLEE FAMILY
                 </Typography>
               </Box>
             </motion.div>
