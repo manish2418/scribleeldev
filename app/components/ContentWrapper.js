@@ -6,7 +6,7 @@ export default function ContentWrapper({ children }) {
   return (
     <Box
       sx={{
-        maxWidth: "1650px",
+        // maxWidth: "1650px",
         margin: "0 auto",
         padding: { xs: "0 0px", sm: "0 20px", md: "0" },
         overflow: "hidden",
