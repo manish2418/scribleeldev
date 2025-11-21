@@ -39,29 +39,44 @@ const HeroSection = () => {
         sx={{
           width: "100%",
           backgroundImage: `url("/herosection/herosectionbg.png")`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundSize: { xs: "cover", sm: "cover", md: "cover" },
+          backgroundPosition: { xs: "center", sm: "center top", md: "center" },
           backgroundRepeat: "no-repeat",
-          // minHeight: { xs: "130vh", sm: "110vh", md: "120vh" },
-          // maxHeight:"600px",
-          height: "clamp(500px, 120vh, 900px)",
+          height: { xs: "auto", sm: "clamp(600px, 100vh, 800px)", md: "clamp(500px, 120vh, 900px)" },
+          minHeight: { xs: "85vh", sm: "100vh", md: "500px" },
           display: "flex",
           alignItems: "center",
           flexDirection: "column",
           textAlign: "center",
           position: "relative",
           zIndex: 2,
-          pb: {xs: 0, sm: "50vh", md: 0},
+          pb: {xs: "30vh", sm: "35vh", md: 0},
+          pt: { xs: 2, sm: 4, md: 0 },
+          overflow: "visible",
+          "@media (orientation: landscape) and (max-width: 950px)": {
+            height: "auto",
+            minHeight: "100vh",
+            pb: "5vh",
+            pt: 1,
+            justifyContent: "flex-start",
+            alignItems: "center",
+          },
         }}
       >
         {/* Clouds */}
          <Box
         sx={{
           position: "absolute",
-          left: { xs: "-30px", md: "60px" },
-          top: { xs: "90px", md: "150px" },
-          width: { xs: "110px", md: "230px" },
+          left: { xs: "-50px", sm: "-20px", md: "40px" },
+          top: { xs: "60px", sm: "100px", md: "130px" },
+          width: { xs: "100px", sm: "160px", md: "200px" },
+          zIndex: 1,
           animation: `${floatLeft} 8s ease-in-out infinite`,
+          "@media (orientation: landscape) and (max-width: 950px)": {
+            left: "-60px",
+            top: "20px",
+            width: "80px",
+          },
         }}
       >
         <Image src={Cloud} alt="cloud-left" style={{ width: "100%", height: "auto" }} />
@@ -71,37 +86,70 @@ const HeroSection = () => {
       <Box
         sx={{
           position: "absolute",
-          right: { xs: "-30px", md: "60px" },
-          top: { xs: "90px", md: "150px" },
-          width: { xs: "110px", md: "230px" },
+          right: { xs: "-50px", sm: "-20px", md: "40px" },
+          top: { xs: "60px", sm: "100px", md: "130px" },
+          width: { xs: "100px", sm: "160px", md: "200px" },
+          zIndex: 1,
           animation: `${floatRight} 8s ease-in-out infinite`,
+          "@media (orientation: landscape) and (max-width: 950px)": {
+            right: "-60px",
+            top: "20px",
+            width: "80px",
+          },
         }}
       >
         <Image src={Cloud} alt="cloud-right" style={{ width: "100%", height: "auto" }} />
       </Box>
 
         {/* Logo */}
-        <Box sx={{ width: { xs: "160px", md: "236px" }, mt: { xs: 6, md: 10 } }}>
+        <Box sx={{ 
+          width: { xs: "140px", sm: "200px", md: "236px" }, 
+          mt: { xs: 4, sm: 8, md: 10 }, 
+          mb: { xs: 1, sm: 0, md: 0 },
+          zIndex: 10,
+          position: "relative",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          "@media (orientation: landscape) and (max-width: 950px)": {
+            width: "100px",
+            mt: 0.5,
+            mb: 2,
+            mx: "auto",
+          },
+        }}>
           <Image src={Logo} alt="logo" style={{ width: "100%", height: "auto" }} />
         </Box>
 
         {/* Heading */}
        <Typography
   sx={{
-    mt: 3,
+    mt: { xs: 2, sm: 6, md: 8 },
     fontWeight: 400,
     color: "#FFFFFF",
-    lineHeight: { xs: "48px", md: "100%" },
-    fontSize: { xs: "28px", md: "44px" },
-    px: { xs: 2, md: 0 },
+    lineHeight: { xs: "1.2", sm: "1.3", md: "100%" },
+    fontSize: { xs: "22px", sm: "36px", md: "44px" },
+    px: { xs: 2, sm: 3, md: 0 },
+    zIndex: 10,
+    position: "relative",
+    textAlign: "center",
+    width: "100%",
+    maxWidth: { xs: "100%", sm: "90%", md: "800px" },
+    mx: "auto",
     opacity: 0,
-    mt:8,
     transform: "translateY(20px)",
-    // textTransform:"uppercase",
     animation: "fadeInUp 3.2s ease forwards",
     "@keyframes fadeInUp": {
       from: { opacity: 0, transform: "translateY(20px)" },
       to: { opacity: 1, transform: "translateY(0)" },
+    },
+    "@media (orientation: landscape) and (max-width: 950px)": {
+      mt: 1,
+      mb: 0.5,
+      fontSize: "18px",
+      lineHeight: "1.3",
+      px: 1,
+      maxWidth: "85%",
     },
   }}
 >
@@ -111,19 +159,51 @@ const HeroSection = () => {
 
 
         {/* Input */}
-        <Box sx={{ mt: { xs: 3, md: 3 }, mb: { xs: 1, md: 0 }, width: "100%", display: "flex", justifyContent: "center", alignItems: "center", px: {xs: 0, md: 0} }}>
+        <Box sx={{ 
+          mt: { xs: 2, sm: 3, md: 3 }, 
+          mb: { xs: 1, sm: 1, md: 0 }, 
+          width: "100%", 
+          maxWidth: { xs: "100%", sm: "500px", md: "600px" },
+          display: "flex", 
+          justifyContent: "center", 
+          alignItems: "center", 
+          px: {xs: 2, sm: 2, md: 0},
+          mx: "auto",
+          zIndex: 15,
+          position: "relative",
+          "@media (orientation: landscape) and (max-width: 950px)": {
+            mt: 0.5,
+            mb: 0.5,
+            maxWidth: "400px",
+            px: 1,
+            width: "100%",
+          },
+        }}>
           <WaitlistInput />
         </Box>
 
         {/* Supporting Text */}
         <Typography
           sx={{
-            mt: { xs: 2, md: 2 },
-            mb: { xs: 4, sm: 6, md: 0 },
+            mt: { xs: 1, sm: 2, md: 2 },
+            mb: { xs: 2, sm: 6, md: 0 },
             color: "#FFFFFF",
-            fontSize: { xs: "12px", sm: "14px", md: "18px" },
+            fontSize: { xs: "11px", sm: "14px", md: "18px" },
             opacity: 0.9,
-            px: {xs:2, md:0},
+            px: {xs: 2, sm: 2, md: 0},
+            textAlign: "center",
+            width: "100%",
+            maxWidth: { xs: "100%", sm: "90%", md: "600px" },
+            mx: "auto",
+            zIndex: 10,
+            position: "relative",
+            "@media (orientation: landscape) and (max-width: 950px)": {
+              mt: 0.5,
+              mb: 0.5,
+              fontSize: "9px",
+              px: 1,
+              maxWidth: "85%",
+            },
           }}
         >
           {/* <SparkleText> */}
@@ -136,12 +216,20 @@ const HeroSection = () => {
           sx={{
             display: "flex",
             gap: { xs: "12px", sm: "16px", md: "20px" },
-            mt: { xs: 3, md: 4 },
-            mb: { xs: 2, md: 0 },
+            mt: { xs: 3, sm: 3, md: 4 },
+            mb: { xs: 2, sm: 2, md: 0 },
             justifyContent: "center",
             alignItems: "center",
             flexWrap: "wrap",
-            zIndex: 10,
+            zIndex: 15,
+            position: "relative",
+            px: { xs: 2, sm: 2, md: 0 },
+            "@media (orientation: landscape) and (max-width: 950px)": {
+              mt: 0.5,
+              mb: 0.5,
+              gap: "6px",
+              px: 1,
+            },
           }}
         >
           {/* Google Play Button */}
@@ -159,6 +247,10 @@ const HeroSection = () => {
                 transform: "scale(1.05)",
                 boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
               },
+              "@media (orientation: landscape) and (max-width: 950px)": {
+                padding: "6px 10px",
+                gap: "5px",
+              },
             }}
           >
             <Box
@@ -168,6 +260,10 @@ const HeroSection = () => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                "@media (orientation: landscape) and (max-width: 950px)": {
+                  width: "18px",
+                  height: "18px",
+                },
               }}
             >
               <Image
@@ -183,8 +279,10 @@ const HeroSection = () => {
                 color: "#7D63FD",
                 fontSize: { xs: "14px", sm: "16px", md: "16px" },
                 fontWeight: 400,
-                // fontFamily: "'Inter', sans-serif",
                 textTransform: "none",
+                "@media (orientation: landscape) and (max-width: 950px)": {
+                  fontSize: "10px",
+                },
               }}
             >
               Google play
@@ -202,11 +300,14 @@ const HeroSection = () => {
               gap: { xs: "8px", sm: "10px", md: "12px" },
               cursor: "pointer",
               position: "relative",
-              // border: "2px dashed #FFFFFF",
               transition: "transform 0.2s ease, box-shadow 0.2s ease",
               "&:hover": {
                 transform: "scale(1.05)",
                 boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+              },
+              "@media (orientation: landscape) and (max-width: 950px)": {
+                padding: "6px 10px",
+                gap: "5px",
               },
             }}
           >
@@ -217,6 +318,10 @@ const HeroSection = () => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                "@media (orientation: landscape) and (max-width: 950px)": {
+                  width: "18px",
+                  height: "18px",
+                },
               }}
             >
               <Image
@@ -232,8 +337,10 @@ const HeroSection = () => {
                 color: "#FFFFFF",
                 fontSize: { xs: "14px", sm: "16px", md: "16px" },
                 fontWeight: 400,
-                // fontFamily: "'Inter', sans-serif",
                 textTransform: "none",
+                "@media (orientation: landscape) and (max-width: 950px)": {
+                  fontSize: "10px",
+                },
               }}
             >
               App Store
@@ -252,6 +359,12 @@ const HeroSection = () => {
                 transform: "rotate(-20deg)",
                 zIndex: 11,
                 minWidth: { xs: "70px", sm: "80px", md: "90px" },
+                "@media (orientation: landscape) and (max-width: 950px)": {
+                  bottom: "-4px",
+                  right: "-30px",
+                  padding: "2px 6px",
+                  minWidth: "55px",
+                },
               }}
             >
               <Typography
@@ -259,10 +372,12 @@ const HeroSection = () => {
                   color: "#FFFFFF",
                   fontSize: { xs: "9px", sm: "10px", md: "14px" },
                   fontWeight: 400,
-                  // fontFamily: "'Inter', sans-serif",
                   whiteSpace: "nowrap",
                   textTransform: "uppercase",
                   letterSpacing: "0.5px",
+                  "@media (orientation: landscape) and (max-width: 950px)": {
+                    fontSize: "7px",
+                  },
                 }}
               >
                 COMING SOON
@@ -275,12 +390,26 @@ const HeroSection = () => {
     <Box
       sx={{
         position: "absolute",
-        bottom: {xs:"1.30%", sm:"-20%", md:"-60%",xl:"-70%"},
-        display: { sm:"flex"},
+        bottom: {xs:"-5%", sm:"-15%", md:"-60%",xl:"-70%"},
+        left: {xs:"50%", sm:"50%", md:"auto"},
+        right: {xs:"auto", sm:"auto", md:"10%"},
+        transform: { xs: "translateX(-50%)", sm: "translateX(-50%)", md: "none" },
+        width: { xs: "70%", sm: "75%", md: "90%" },
+        maxWidth: { xs: "280px", sm: "550px", md: "900px" },
+        display: "flex",
         justifyContent: "center",
-        width: "90%",
-        right: {xs:"0%", sm:"-4%", md:"0%"},
-       
+        alignItems: "flex-end",
+        zIndex: 0,
+        pointerEvents: "none",
+        "@media (orientation: landscape) and (max-width: 950px)": {
+          width: "40%",
+          maxWidth: "200px",
+          bottom: "-30%",
+          left: "50%",
+          right: "auto",
+          transform: "translateX(-50%)",
+          opacity: 1,
+        },
       }}
     >
       <Box
@@ -294,29 +423,21 @@ const HeroSection = () => {
               transform: "translateY(-20px)",
             },
           },
+          width: "100%",
         }}
       >
-        <Box
-          sx={{
-            width: {xs:"60%", sm:"80%", md:"95%",xl:"100%"},
-            maxWidth: "900px",
+        <Image
+          src={Phone}
+          height={1000}
+          width={900}
+          unoptimized
+          alt="phone"
+          style={{
+            width: "100%",
+            height: "auto",
             display: "block",
-            margin:"0 auto",
-            // mt:{xs:"10px"}
           }}
-        >
-          <Image
-            src={Phone}
-            height={1000}
-            width={900}
-            unoptimized
-            alt="phone"
-            style={{
-              width: "85%",
-              height: "auto",
-            }}
-          />
-        </Box>
+        />
       </Box>
     </Box>
 
