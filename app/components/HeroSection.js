@@ -126,9 +126,9 @@ const HeroSection = () => {
             px: {xs:2, md:0},
           }}
         >
-          <SparkleText>
+          {/* <SparkleText> */}
             Join {count.toLocaleString()}+ parents saving their kids memories.
-          </SparkleText>
+          {/* </SparkleText> */}
         </Typography>
 
         {/* App Store Buttons */}

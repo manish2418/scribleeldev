@@ -64,6 +64,7 @@ const Footer = () => {
             }}
           >
             <FooterWaitlistInput />
+            
           </Box>
         </ScrollAnimation>
         
@@ -83,9 +84,9 @@ const Footer = () => {
 
             }}
           >
-            <SparkleText>
+            {/* <SparkleText> */}
             Join {count.toLocaleString()}+ parents saving their kids memories.
-            </SparkleText>
+            {/* </SparkleText> */}
           </Typography>
         </ScrollAnimation>
         

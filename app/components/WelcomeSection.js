@@ -12,7 +12,7 @@ const WelcomeSection = () => {
         sx={{
           width: "100%",
           minHeight: { xs: "70vh", md: "60vh" },
-          background: "linear-gradient(180deg,#FFE3FF 0%,#FFFFFF 100%)",
+          background: "#FFFFFF",
           px: { xs: 2, md: 6 },      // desktop remains SAME
           py: { xs: 4, md: 8 },      // desktop remains SAME
           display: "flex",
