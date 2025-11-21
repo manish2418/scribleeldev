@@ -176,7 +176,7 @@ const baseTransforms = [
           opacity: isTransitioning ? 0.7 : 1,
           left: {
             xs: i === 0 ? "calc(50% - 110px)" : i === 1 ? "50%" : "calc(50% + 20px)",
-            sm: i === 0 ? "calc(50% - 100px)" : i === 1 ? "50%" : "calc(50% + 40px)",
+            sm: i === 0 ? "calc(35% - 100px)" : i === 1 ? "50%" : "calc(50% + 40px)",
             md: i === 0 ? "calc(45% - 260px)" : i === 1 ? "50%" : "calc(53% + 60px)",
           },
           top: {

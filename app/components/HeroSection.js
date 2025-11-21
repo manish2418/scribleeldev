@@ -390,7 +390,7 @@ const HeroSection = () => {
     <Box
       sx={{
         position: "absolute",
-        bottom: {xs:"-5%", sm:"-15%", md:"-60%",xl:"-70%"},
+        bottom: {xs:"-5%", sm:"-15%", md:"-50%",xl:"-70%"},
         left: {xs:"50%", sm:"50%", md:"auto"},
         right: {xs:"auto", sm:"auto", md:"10%"},
         transform: { xs: "translateX(-50%)", sm: "translateX(-50%)", md: "none" },
