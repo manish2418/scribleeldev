@@ -19,8 +19,10 @@ export default function RootLayout({ children }) {
         />
         <style dangerouslySetInnerHTML={{
           __html: `
-            * {
-              cursor: none !important;
+            @media (min-width: 768px) and (pointer: fine) {
+              * {
+                cursor: none !important;
+              }
             }
           `
         }} />

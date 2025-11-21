@@ -32,7 +32,7 @@ const slideContent = [
   },
   {
     text: "Every doodle shows how far",
-    highlight: "they've come.",
+    highlight: "they have come.",
     color: "#003A81",
     highlightColor: "#F22D91",
   },
