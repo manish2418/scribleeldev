@@ -3,6 +3,7 @@
 import { Box, Grid, Typography } from "@mui/material";
 import Lottie from "lottie-react";
 import animationData from "../../public/flying.json";
+import ScrollAnimation from "./ScrollAnimation";
 
 const WelcomeSection = () => {
   return (
@@ -27,34 +28,38 @@ const WelcomeSection = () => {
         >
           {/* LEFT TEXT */}
           <Grid  size={{xs:12,md:8}}>
-            <Typography
-              variant="h2"
-              color="#F22D91"
-              // textTransform="uppercase"
-              mb={2}
-              sx={{
-                textAlign: { xs: "center", md: "left" },
-                fontSize: { xs: "24px", md: "46px" },
-                fontWeight: "bold",
-                fontFamily: "'Dancing Script', cursive",
-              }}
-            >
-              You're welcome to scriblee world
-            </Typography>
+            <ScrollAnimation direction="up" delay={0.1}>
+              <Typography
+                variant="h2"
+                color="#F22D91"
+                // textTransform="uppercase"
+                mb={2}
+                sx={{
+                  textAlign: { xs: "center", md: "left" },
+                  fontSize: { xs: "24px", md: "46px" },
+                  fontWeight: "bold",
+                  fontFamily: "'Dancing Script', cursive",
+                }}
+              >
+                You're welcome to scriblee world
+              </Typography>
+            </ScrollAnimation>
 
-            <Typography
-              fontWeight={400}
-              color="#003A81"
-              // textTransform="capitilis"
-              sx={{
-                textAlign: { xs: "center", md: "left" },
-                fontSize: { xs: "22px", sm: "26px", md: "48px" }, // desktop EXACT size preserved
-                lineHeight: { xs: "140%", md: "120%" }, // desktop preserved
-                px: { xs: 1, md: 0 },
-              }}
-            >
-              Scriblee transforms everyday drawings into beautiful, animated stories and digital keepsakes—so you never have to choose between your child’s creativity and a clutter-free home.
-            </Typography>
+            <ScrollAnimation direction="up" delay={0.3}>
+              <Typography
+                fontWeight={400}
+                color="#003A81"
+                // textTransform="capitilis"
+                sx={{
+                  textAlign: { xs: "center", md: "left" },
+                  fontSize: { xs: "22px", sm: "26px", md: "48px" }, // desktop EXACT size preserved
+                  lineHeight: { xs: "140%", md: "120%" }, // desktop preserved
+                  px: { xs: 1, md: 0 },
+                }}
+              >
+                Scriblee transforms everyday drawings into beautiful, animated stories and digital keepsakes—so you never have to choose between your child's creativity and a clutter-free home.
+              </Typography>
+            </ScrollAnimation>
           </Grid>
 
           {/* RIGHT LOTTIE (Desktop unchanged) */}

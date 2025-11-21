@@ -1,6 +1,7 @@
 "use client";
 import { Grid, Typography, Box } from "@mui/material";
 import ScrollFunction from "./ScrollFunction";
+import ScrollAnimation from "./ScrollAnimation";
 
 
 const ScribleMagic =()=>{
@@ -52,24 +53,28 @@ const ScribleMagic =()=>{
             }}
           />
 
-<Typography 
-  variant="subtitle1" 
-  color="#09448D" 
-  display={"flex"} 
-  justifyContent={"center"} 
-  textAlign={"center"} 
-  lineHeight={"93%"} 
-  textTransform={"uppercase"}
-  fontWeight={400}
-  mt={2}
-  sx={{
-    fontSize:{xs:"24px", sm:"36px", md:"3.75rem"},
-    px:{xs:2, md:0}
-  }}
->
-  See How Their Art Turns Into Stories<br/>You'll Cherish Forever
-</Typography>
-<ScrollFunction/>
+<ScrollAnimation direction="up" delay={0.2}>
+  <Typography 
+    variant="subtitle1" 
+    color="#09448D" 
+    display={"flex"} 
+    justifyContent={"center"} 
+    textAlign={"center"} 
+    lineHeight={"93%"} 
+    textTransform={"uppercase"}
+    fontWeight={400}
+    mt={2}
+    sx={{
+      fontSize:{xs:"24px", sm:"36px", md:"3.75rem"},
+      px:{xs:2, md:0}
+    }}
+  >
+    See How Their Art Turns Into Stories<br/>You'll Cherish Forever
+  </Typography>
+</ScrollAnimation>
+<ScrollAnimation direction="up" delay={0.4}>
+  <ScrollFunction/>
+</ScrollAnimation>
         </Box>
     )
 }
