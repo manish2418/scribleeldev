@@ -1,18 +1,17 @@
-"use client"
+"use client";
 
 import { Grid, Typography, Box, keyframes } from "@mui/material";
 import Image from "next/image";
 import Logo from "../../public/logo.svg";
 import Cloud from "../../public/herosection/cloud.svg";
 import WaitlistInput from "./WaitlistInput";
-import LeftPhone from "../../public/herosection/leftphone.png"
-import RightPhone from "../../public/herosection/rightphone.png"
-import Phone from "../../public/herosection/phone.png"
+import LeftPhone from "../../public/herosection/leftphone.png";
+import RightPhone from "../../public/herosection/rightphone.png";
+import Phone from "../../public/herosection/phone.png";
 import GPlayLogo from "../../public/herosection/gplay.svg";
 import AppleLogo from "../../public/herosection/applelogo.svg";
 import { useWaitlistCount } from "../hooks/useWaitlistCount";
 import SparkleText from "./SparkleText";
-
 
 const floatLeft = keyframes`
   0% { transform: translateX(0); opacity: 1; }
@@ -28,11 +27,19 @@ const floatRight = keyframes`
 
 const HeroSection = () => {
   const { count } = useWaitlistCount();
-  
-  return (
-    <Box sx={{ width: "100%",minHeight:{xs:"auto", sm:"auto", md:"180vh"}, position: "relative",background:"linear-gradient(179.2deg, #FFC1FF 73.06%, #FFFFFF 114.87%)",padding:"0px", pb:{xs:0, sm:0, md:0}
- }}>
 
+  return (
+    <Box
+      sx={{
+        width: "100%",
+        minHeight: { xs: "auto", sm: "auto", md: "180vh" },
+        position: "relative",
+        background:
+          "linear-gradient(179.2deg, #FFC1FF 73.06%, #FFFFFF 114.87%)",
+        padding: "0px",
+        pb: { xs: 0, sm: 0, md: 0 },
+      }}
+    >
       {/* ====== TOP SECTION with BG IMAGE ====== */}
       <Grid
         container
@@ -42,7 +49,11 @@ const HeroSection = () => {
           backgroundSize: { xs: "cover", sm: "cover", md: "cover" },
           backgroundPosition: { xs: "center", sm: "center top", md: "center" },
           backgroundRepeat: "no-repeat",
-          height: { xs: "auto", sm: "clamp(600px, 100vh, 800px)", md: "clamp(500px, 120vh, 900px)" },
+          height: {
+            xs: "auto",
+            sm: "clamp(600px, 100vh, 800px)",
+            md: "clamp(500px, 120vh, 900px)",
+          },
           minHeight: { xs: "85vh", sm: "100vh", md: "500px" },
           display: "flex",
           alignItems: "center",
@@ -50,7 +61,7 @@ const HeroSection = () => {
           textAlign: "center",
           position: "relative",
           zIndex: 2,
-          pb: {xs: "30vh", sm: "35vh", md: 0},
+          pb: { xs: "30vh", sm: "35vh", md: 0 },
           pt: { xs: 2, sm: 4, md: 0 },
           overflow: "visible",
           "@media (orientation: landscape) and (max-width: 950px)": {
@@ -64,121 +75,136 @@ const HeroSection = () => {
         }}
       >
         {/* Clouds */}
-         <Box
-        sx={{
-          position: "absolute",
-          left: { xs: "-50px", sm: "-20px", md: "40px" },
-          top: { xs: "60px", sm: "100px", md: "130px" },
-          width: { xs: "100px", sm: "160px", md: "200px" },
-          zIndex: 1,
-          animation: `${floatLeft} 8s ease-in-out infinite`,
-          "@media (orientation: landscape) and (max-width: 950px)": {
-            left: "-60px",
-            top: "20px",
-            width: "80px",
-          },
-        }}
-      >
-        <Image src={Cloud} alt="cloud-left" style={{ width: "100%", height: "auto" }} />
-      </Box>
+        <Box
+          sx={{
+            position: "absolute",
+            left: { xs: "-50px", sm: "-20px", md: "40px" },
+            top: { xs: "60px", sm: "100px", md: "130px" },
+            width: { xs: "100px", sm: "160px", md: "200px" },
+            zIndex: 1,
+            animation: `${floatLeft} 8s ease-in-out infinite`,
+            "@media (orientation: landscape) and (max-width: 950px)": {
+              left: "-60px",
+              top: "20px",
+              width: "80px",
+            },
+          }}
+        >
+          <Image
+            src={Cloud}
+            alt="cloud-left"
+            style={{ width: "100%", height: "auto" }}
+          />
+        </Box>
 
-      {/* Cloud Right */}
-      <Box
-        sx={{
-          position: "absolute",
-          right: { xs: "-50px", sm: "-20px", md: "40px" },
-          top: { xs: "60px", sm: "100px", md: "130px" },
-          width: { xs: "100px", sm: "160px", md: "200px" },
-          zIndex: 1,
-          animation: `${floatRight} 8s ease-in-out infinite`,
-          "@media (orientation: landscape) and (max-width: 950px)": {
-            right: "-60px",
-            top: "20px",
-            width: "80px",
-          },
-        }}
-      >
-        <Image src={Cloud} alt="cloud-right" style={{ width: "100%", height: "auto" }} />
-      </Box>
+        {/* Cloud Right */}
+        <Box
+          sx={{
+            position: "absolute",
+            right: { xs: "-50px", sm: "-20px", md: "40px" },
+            top: { xs: "60px", sm: "100px", md: "130px" },
+            width: { xs: "100px", sm: "160px", md: "200px" },
+            zIndex: 1,
+            animation: `${floatRight} 8s ease-in-out infinite`,
+            "@media (orientation: landscape) and (max-width: 950px)": {
+              right: "-60px",
+              top: "20px",
+              width: "80px",
+            },
+          }}
+        >
+          <Image
+            src={Cloud}
+            alt="cloud-right"
+            style={{ width: "100%", height: "auto" }}
+          />
+        </Box>
 
         {/* Logo */}
-        <Box sx={{ 
-          width: { xs: "140px", sm: "200px", md: "236px" }, 
-          mt: { xs: 4, sm: 8, md: 10 }, 
-          mb: { xs: 1, sm: 0, md: 0 },
-          zIndex: 10,
-          position: "relative",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          "@media (orientation: landscape) and (max-width: 950px)": {
-            width: "100px",
-            mt: 0.5,
-            mb: 2,
-            mx: "auto",
-          },
-        }}>
-          <Image src={Logo} alt="logo" style={{ width: "100%", height: "auto" }} />
+        <Box
+          sx={{
+            width: { xs: "140px", sm: "200px", md: "236px" },
+            mt: { xs: 4, sm: 8, md: 10 },
+            mb: { xs: 1, sm: 0, md: 0 },
+            zIndex: 10,
+            position: "relative",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            "@media (orientation: landscape) and (max-width: 950px)": {
+              width: "100px",
+              mt: 0.5,
+              mb: 2,
+              mx: "auto",
+            },
+          }}
+        >
+          <Image
+            src={Logo}
+            alt="logo"
+            style={{ width: "100%", height: "auto" }}
+          />
         </Box>
 
         {/* Heading */}
-       <Typography
-  sx={{
-    mt: { xs: 2, sm: 6, md: 8 },
-    fontWeight: 400,
-    color: "#FFFFFF",
-    lineHeight: { xs: "1.2", sm: "1.3", md: "100%" },
-    fontSize: { xs: "22px", sm: "36px", md: "44px" },
-    px: { xs: 2, sm: 3, md: 0 },
-    zIndex: 10,
-    position: "relative",
-    textAlign: "center",
-    width: "100%",
-    maxWidth: { xs: "100%", sm: "90%", md: "800px" },
-    mx: "auto",
-    opacity: 0,
-    transform: "translateY(20px)",
-    animation: "fadeInUp 3.2s ease forwards",
-    "@keyframes fadeInUp": {
-      from: { opacity: 0, transform: "translateY(20px)" },
-      to: { opacity: 1, transform: "translateY(0)" },
-    },
-    "@media (orientation: landscape) and (max-width: 950px)": {
-      mt: 1,
-      mb: 0.5,
-      fontSize: "18px",
-      lineHeight: "1.3",
-      px: 1,
-      maxWidth: "85%",
-    },
-  }}
->
-  Turn Your Child's Art Into Memories You'll 
-  <br /> Keep Forever -Without Piles of Paper
-</Typography>
-
+        <Typography
+          sx={{
+            mt: { xs: 2, sm: 6, md: 8 },
+            fontWeight: 400,
+            color: "#FFFFFF",
+            lineHeight: { xs: "1.2", sm: "1.3", md: "100%" },
+            fontSize: { xs: "22px", sm: "36px", md: "44px" },
+            px: { xs: 2, sm: 3, md: 0 },
+            zIndex: 10,
+            position: "relative",
+            textAlign: "center",
+            width: "100%",
+            maxWidth: { xs: "100%", sm: "90%", md: "800px" },
+            mx: "auto",
+            opacity: 0,
+            transform: "translateY(20px)",
+            animation: "fadeInUp 3.2s ease forwards",
+            "@keyframes fadeInUp": {
+              from: { opacity: 0, transform: "translateY(20px)" },
+              to: { opacity: 1, transform: "translateY(0)" },
+            },
+            "@media (orientation: landscape) and (max-width: 950px)": {
+              mt: 1,
+              mb: 0.5,
+              fontSize: "18px",
+              lineHeight: "1.3",
+              px: 1,
+              maxWidth: "85%",
+            },
+          }}
+        >
+          Turn Your Child's Art Into Memories You'll
+          <br /> Keep Forever -Without Piles of Paper
+        </Typography>
 
         {/* Input */}
-        <Box sx={{ 
-          mt: { xs: 2, sm: 3, md: 3 }, 
-          mb: { xs: 1, sm: 1, md: 0 }, 
-          width: "100%", 
-          maxWidth: { xs: "100%", sm: "500px", md: "600px" },
-          display: "flex", 
-          justifyContent: "center", 
-          alignItems: "center", 
-          px: {xs: 2, sm: 2, md: 0},
-          mx: "auto",
-          zIndex: 15,
-          position: "relative",
-          "@media (orientation: landscape) and (max-width: 950px)": {
-            mt: 0.5,
-            mb: 0.5,
-            maxWidth: "400px",
-            px: 1,
+        <Box
+          sx={{
+            mt: { xs: 2, sm: 3, md: 3 },
+            mb: { xs: 1, sm: 1, md: 0 },
             width: "100%",
-          },
-        }}>
+            maxWidth: { xs: "100%", sm: "500px", md: "600px" },
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            px: { xs: 2, sm: 2, md: 0 },
+            mx: "auto",
+            zIndex: 15,
+            position: "relative",
+            "@media (orientation: landscape) and (max-width: 950px)": {
+              mt: 0.5,
+              mb: 0.5,
+              maxWidth: "400px",
+              px: 1,
+              width: "100%",
+            },
+          }}
+        >
           <WaitlistInput />
         </Box>
 
@@ -190,7 +216,7 @@ const HeroSection = () => {
             color: "#FFFFFF",
             fontSize: { xs: "11px", sm: "14px", md: "18px" },
             opacity: 0.9,
-            px: {xs: 2, sm: 2, md: 0},
+            px: { xs: 2, sm: 2, md: 0 },
             textAlign: "center",
             width: "100%",
             maxWidth: { xs: "100%", sm: "90%", md: "600px" },
@@ -207,7 +233,7 @@ const HeroSection = () => {
           }}
         >
           {/* <SparkleText> */}
-            Join {count.toLocaleString()}+ parents saving their kids memories.
+          Join {count.toLocaleString()}+ parents saving their kids memories.
           {/* </SparkleText> */}
         </Typography>
 
@@ -329,7 +355,11 @@ const HeroSection = () => {
                 alt="App Store"
                 width={32}
                 height={32}
-                style={{ width: "100%", height: "100%", filter: "brightness(0) invert(1)" }}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  filter: "brightness(0) invert(1)",
+                }}
               />
             </Box>
             <Typography
@@ -345,7 +375,7 @@ const HeroSection = () => {
             >
               App Store
             </Typography>
-            
+
             {/* COMING SOON Banner */}
             <Box
               sx={{
@@ -386,70 +416,66 @@ const HeroSection = () => {
           </Box>
         </Box>
 
-            
-    <Box
-      sx={{
-        position: "absolute",
-        bottom: {xs:"-5%", sm:"-15%", md:"-50%",xl:"-70%"},
-        left: {xs:"50%", sm:"50%", md:"auto"},
-        right: {xs:"auto", sm:"auto", md:"10%"},
-        transform: { xs: "translateX(-50%)", sm: "translateX(-50%)", md: "none" },
-        width: { xs: "70%", sm: "75%", md: "90%" },
-        maxWidth: { xs: "280px", sm: "550px", md: "900px" },
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "flex-end",
-        zIndex: 0,
-        pointerEvents: "none",
-        "@media (orientation: landscape) and (max-width: 950px)": {
-          width: "40%",
-          maxWidth: "200px",
-          bottom: "-30%",
-          left: "50%",
-          right: "auto",
-          transform: "translateX(-50%)",
-          opacity: 1,
-        },
-      }}
-    >
-      <Box
-        sx={{
-          animation: "float 3s ease-in-out infinite",
-          "@keyframes float": {
-            "0%, 100%": {
-              transform: "translateY(0px)",
+        <Box
+          sx={{
+            position: "absolute",
+            bottom: { xs: "-5%", sm: "-15%", md: "-50%", xl: "-70%" },
+            left: { xs: "60%", sm: "50%", md: "auto" },
+            right: { xs: "auto", sm: "auto", md: "10%" },
+            transform: {
+              xs: "translateX(-50%)",
+              sm: "translateX(-50%)",
+              md: "none",
             },
-            "50%": {
-              transform: "translateY(-20px)",
+            width: { xs: "70%", sm: "75%", md: "90%" },
+            maxWidth: { xs: "280px", sm: "550px", md: "900px" },
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "flex-end",
+            zIndex: 0,
+            pointerEvents: "none",
+            "@media (orientation: landscape) and (max-width: 950px)": {
+              width: "40%",
+              maxWidth: "200px",
+              bottom: "-30%",
+              left: "50%",
+              right: "auto",
+              transform: "translateX(-50%)",
+              opacity: 1,
             },
-          },
-          width: "100%",
-        }}
-      >
-        <Image
-          src={Phone}
-          height={1000}
-          width={900}
-          unoptimized
-          alt="phone"
-          style={{
-            width: "100%",
-            height: "auto",
-            display: "block",
           }}
-        />
-      </Box>
-    </Box>
-
+        >
+          <Box
+            sx={{
+              animation: "float 3s ease-in-out infinite",
+              "@keyframes float": {
+                "0%, 100%": {
+                  transform: "translateY(0px)",
+                },
+                "50%": {
+                  transform: "translateY(-20px)",
+                },
+              },
+              width: "100%",
+            }}
+          >
+            <Image
+              src={Phone}
+              height={1000}
+              width={900}
+              unoptimized
+              alt="phone"
+              style={{
+                width: "90%",
+                height: "auto",
+                display: "block",
+              }}
+            />
+          </Box>
+        </Box>
       </Grid>
-
-
-
-
     </Box>
   );
 };
 
 export default HeroSection;
-
-
