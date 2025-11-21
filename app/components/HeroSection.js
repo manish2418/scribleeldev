@@ -466,7 +466,7 @@ const HeroSection = () => {
               unoptimized
               alt="phone"
               style={{
-                width: "90%",
+                width: "80%",
                 height: "auto",
                 display: "block",
               }}
