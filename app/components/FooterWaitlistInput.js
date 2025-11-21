@@ -66,15 +66,16 @@ const FooterWaitlistInput = () => {
         component="form"
         onSubmit={handleSubmit}
         sx={{
-          backgroundColor: "#FFE3DA", 
+          background: "rgba(135, 206, 235, 0.25)",
+          backdropFilter: "blur(10px)",
           borderRadius: "16px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "6px",
+          padding: {xs: "4px", sm: "8px"},
           width: "100%",
           maxWidth: {xs:"100%", sm:"450px", md:"509px"},
-          gap: {xs: "8px", sm: "10px"},
+          gap: {xs: "6px", sm: "10px"},
         }}
       >
         <TextField
@@ -92,9 +93,13 @@ const FooterWaitlistInput = () => {
           InputProps={{
             disableUnderline: true,
             sx: {
-              color:"#FE6F3F",
-              paddingLeft: {xs:"12px", sm:"16px"},
-              fontSize: {xs:"12px", sm:"14px"},
+              color: "#003A81",
+              paddingLeft: {xs:"12px", sm:"16px", md:"20px"},
+              fontSize: {xs:"12px", sm:"14px", md:"16px"},
+              "&::placeholder": {
+                color: "rgba(0, 58, 129, 0.6)",
+                opacity: 1,
+              },
             },
           }}
           sx={{ 
@@ -108,16 +113,17 @@ const FooterWaitlistInput = () => {
           variant="contained"
           disabled={loading}
           sx={{
-            backgroundColor: "#FF7A3D",
-            borderRadius: "16px",
-            padding: {xs:"10px 16px", sm:"10px 20px"},
+            backgroundColor: "#09448D",
+            color: "rgba(255, 255, 255, 1)",
+            borderRadius: "8px",
+            padding: {xs:"8px 14px", sm:"10px 20px", md:"10px 24px"},
             textTransform: "none",
-            fontSize: {xs:"12px", sm:"14px"},
+            fontSize: {xs:"12px", sm:"14px", md:"16px"},
             whiteSpace: "nowrap",
             minWidth: "fit-content",
             height: "fit-content",
             alignSelf: "center",
-            "&:hover": { backgroundColor: "#FF6A20" },
+            "&:hover": { backgroundColor: "#0B336D" },
             "&:disabled": { opacity: 0.7 },
           }}
         >
