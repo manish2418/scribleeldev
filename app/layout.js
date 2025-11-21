@@ -2,6 +2,7 @@ import ThemeRegistry from "./ThemeRegistry";
 import SplashScreen from "./components/SplashScreen";
 import ContentWrapper from "./components/ContentWrapper";
 import CustomCursor from "./components/CustomCursor";
+import GoogleAnalytics from "./components/GoogleAnalytics";
 import { Geist, Geist_Mono } from "next/font/google";
 
 const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
         }} />
       </head>
       <body>
+        <GoogleAnalytics />
         <ThemeRegistry>
           <CustomCursor />
           <SplashScreen />
